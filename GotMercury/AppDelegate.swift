@@ -16,6 +16,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let userDefaults = UserDefaults.standard
+        
+        if !userDefaults.bool(forKey: "launchedBefore") {
+            //let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            //let vc : WelcomeViewController = mainStoryboard.instantiateViewController(withIdentifier: "WalkThroughScreen") as! WelcomeViewController
+            //self.window?.makeKeyAndVisible()
+            //self.window?.rootViewController?.present(vc, animated: false, completion: nil)
+            print("This is the first launch!")
+            userDefaults.set(true, forKey: "launchedBefore")
+            userDefaults.synchronize()
+            
+        } else {
+            print("This is the NOT the first launch!")
+        }
+        
         return true
     }
 
